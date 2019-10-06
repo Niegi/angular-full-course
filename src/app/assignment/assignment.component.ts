@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class AssignmentComponent implements OnInit {
 
   userName: string = '';
-  isDisabled = false;
+  isDisabled = true;
 
   constructor() { }
 
@@ -17,10 +17,15 @@ export class AssignmentComponent implements OnInit {
 
   onClick() {
     this.userName = '';
+    this.isDisabled = true;
   }
 
   onInputChange() {
-    console.log('onInputChange');
+    if (!this.userName || this.userName.length === 0) {
+      this.isDisabled = true;
+    } else {
+      this.isDisabled = false;
+    }
   }
 
 }
